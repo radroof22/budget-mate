@@ -1,6 +1,6 @@
 import './App.css';
 import PeoplePane from './components/PeoplePane/PeoplePane';
-
+import ItemPane from './components/ItemPane/ItemPane'
 function App() {
   return (
     <div className="App">
@@ -12,9 +12,7 @@ function App() {
         <PeoplePane />
       </div>
       <div className='itemPane'>
-        <div className="innerContent">
-          <h5 className='paneHeader'>Items</h5>
-        </div>
+        <ItemPane/>
       </div>
     </div>
   );
