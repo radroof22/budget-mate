@@ -6,7 +6,7 @@
 .peoplePane {
   float: left;
   width: 30%;
-}
+  }
 
 .App {
   padding-left: 10%;
@@ -21,4 +21,6 @@
 
 .paneHeader {
   font-size: x-large;
+  text-align: center;
+  background-color: beige;
 }
