@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "./PeoplePane.css"
 
-function PeoplePane() {
+const PeoplePane = ({People, addPerson}) => {
     const [personCount, setpersonCount] = useState(0);
-    const [People, setPeople] = useState([]);
+    
     const [CurrPerson, setCurrPerson] = useState("");
 
     function addNewPerson() {
-        setPeople([...People, {
+        addPerson({
             id: personCount,
             name: CurrPerson,
             total: 0.0
-        }]);
+        })
+        // setPeople([...People, ]);
         setCurrPerson("");
         setpersonCount(personCount + 1)
     }
