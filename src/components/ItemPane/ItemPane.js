@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function ItemPane() {
-  const [items, setItems] = useState([])
+function ItemPane({items, addItem}) {
+  
   const [itemCount, setItemCount] = useState(0)
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(0);
   const [itemQuantity, setItemQuantity] = useState(0)
 
-  function addItem() {
+  function addNewItem() {
     let item = {
       id: itemCount,
       name: itemName,
@@ -15,7 +15,7 @@ function ItemPane() {
       quantity: itemQuantity
     }
     
-    setItems([...items, item]);
+    addItem(item)
 
     // reset state
     setItemCount(itemCount + 1);
@@ -46,14 +46,14 @@ function ItemPane() {
               value={itemQuantity} 
               onChange={e => setItemQuantity(e.target.value)} 
             />
-            <button onClick={addItem}>Add Item</button>
+            <button onClick={addNewItem}>Add Item</button>
           </div>
           <div>
             <ul>
               {items.map(item => {
                 return (
                   <li key={item.id}>
-                    {item.name} - {item.quantity} @ ${item.price}
+                    {item.name} - {item.quantity} @ ${item.price} = <strong>${item.quantity * item.price}</strong>
                   </li>
                 )
               })}

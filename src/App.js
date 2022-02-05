@@ -5,10 +5,16 @@ import { useState } from "react";
 
 function App() {
   const [People, setPeople] = useState([]);
+  const [items, setItems] = useState([])
 
   function addPerson(newPerson) {
     setPeople([...People, newPerson]);
   }
+
+  function addItem(newItem) {
+    setItems([...items, newItem])
+  }
+
   return (
     <div className="App">
       <header className='appHeader'>
@@ -19,7 +25,7 @@ function App() {
         <PeoplePane People={People} addPerson={addPerson} />
       </div>
       <div className='itemPane'>
-        <ItemPane/>
+        <ItemPane items={items} addItem={addItem} />
       </div>
     </div>
   );
