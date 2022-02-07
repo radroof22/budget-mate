@@ -1,15 +1,10 @@
 import './App.css';
-import PeoplePane from './components/PeoplePane/PeoplePane';
+import PeoplePane from './features/people/People';
 import ItemPane from './components/ItemPane/ItemPane'
 import { useState } from "react";
 
 function App() {
-  const [People, setPeople] = useState([]);
   const [items, setItems] = useState([])
-
-  function addPerson(newPerson) {
-    setPeople([...People, newPerson]);
-  }
 
   function addItem(newItem) {
     setItems([...items, newItem])
@@ -22,7 +17,7 @@ function App() {
       </header>
       <hr/>
       <div className='peoplePane'>
-        <PeoplePane People={People} addPerson={addPerson} />
+        <PeoplePane />
       </div>
       <div className='itemPane'>
         <ItemPane items={items} addItem={addItem} />
