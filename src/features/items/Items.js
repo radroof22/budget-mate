@@ -1,21 +1,26 @@
 import { useState } from "react";
+import {useDispatch, useSelector} from "react-redux"
+import {addItem} from "./itemSlice"
 
-function ItemPane({items, addItem}) {
-  
+function ItemPane() {
+  // Local state
   const [itemCount, setItemCount] = useState(0)
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(0);
   const [itemQuantity, setItemQuantity] = useState(0)
 
+   // Redux state
+   const items = useSelector(state => state.items.items)
+   const dispatch = useDispatch()
+
   function addNewItem() {
     let item = {
-      id: itemCount,
       name: itemName,
       price: itemPrice,
       quantity: itemQuantity
     }
     
-    addItem(item)
+    dispatch(addItem(item))
 
     // reset state
     setItemCount(itemCount + 1);

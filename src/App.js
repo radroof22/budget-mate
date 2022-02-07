@@ -1,14 +1,8 @@
 import './App.css';
 import PeoplePane from './features/people/People';
-import ItemPane from './components/ItemPane/ItemPane'
-import { useState } from "react";
+import ItemPane from "./features/items/Items"
 
 function App() {
-  const [items, setItems] = useState([])
-
-  function addItem(newItem) {
-    setItems([...items, newItem])
-  }
 
   return (
     <div className="App">
@@ -20,7 +14,7 @@ function App() {
         <PeoplePane />
       </div>
       <div className='itemPane'>
-        <ItemPane items={items} addItem={addItem} />
+        <ItemPane />
       </div>
     </div>
   );
