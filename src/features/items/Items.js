@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {addItem} from "./itemSlice"
-
+import ItemEntry from "./ItemEntry";
 function ItemPane() {
   // Local state
   const [itemCount, setItemCount] = useState(0)
@@ -56,11 +56,7 @@ function ItemPane() {
           <div>
             <ul>
               {items.map(item => {
-                return (
-                  <li key={item.id}>
-                    {item.name} - {item.quantity} @ ${item.price} = <strong>${item.quantity * item.price}</strong>
-                  </li>
-                )
+                return <ItemEntry itemId={item.id}></ItemEntry>
               })}
             </ul>
           </div>
