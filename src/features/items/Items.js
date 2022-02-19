@@ -56,7 +56,7 @@ function ItemPane() {
           <div>
             <ul>
               {items.map(item => {
-                return <ItemEntry itemId={item.id}></ItemEntry>
+                return <ItemEntry key={item.id} itemId={item.id}></ItemEntry>
               })}
             </ul>
           </div>
