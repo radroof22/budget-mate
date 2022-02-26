@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux"
 import "./ItemEntry.css"
-import PersonAssignment from "../personAssignment/personAssignment"
+import PersonAssignment from "../personAssignment/PersonAssignment"
 
 function ItemEntry({itemId}) {
   // Redux state
@@ -17,7 +17,7 @@ function ItemEntry({itemId}) {
         {item.name} - {item.quantity} @ ${item.price} = <strong>${item.quantity * item.price}</strong><button onClick={() => setshowPersonAdder(!showPersonAdder)}>+</button>
       </li>
 
-      {showPersonAdder && <PersonAssignment /> }
+      {showPersonAdder && <PersonAssignment itemId={itemId}/> }
       
     </div> 
       

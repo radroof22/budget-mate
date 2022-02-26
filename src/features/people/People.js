@@ -16,7 +16,7 @@ export function People() {
           <h5 className='paneHeader'>People</h5>
           <div>
               <input value={currPerson} onChange={e => setcurrPerson(e.target.value)}/>
-              <button onClick={() => dispatch(addPerson(currPerson))}>Add</button>
+              <button onClick={() => {dispatch(addPerson(currPerson)); setcurrPerson("") }}>Add</button>
           </div>
           <div>
               <ul>
