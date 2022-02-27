@@ -14,16 +14,21 @@ export function People() {
             id: person.id,
             totalCost: 0,
         }
-        newPerson.totalCost = state.personAssignments.assignments.reduce((prev, curr) => {
-            if (curr.personId === person.id) {
+        newPerson.totalCost = state.personAssignments.assignments
+            .filter(assignment => assignment.personId === newPerson.id)
+            .reduce((prev, curr) => {
+
                 let filteredItems = state.items.items.filter(item => item.id === curr.itemId)
                 if (filteredItems.length > 0){
                     let item = filteredItems[0]
-                    return prev + item.price * item.quantity
-                }                
-            }
-            return prev;
-        }, 0);
+                    let total_participants_on_item = state.personAssignments.assignments    
+                        .filter(assignment => assignment.itemId === item.id).length
+                    return prev + (item.price * item.quantity) / total_participants_on_item
+                }
+
+                return prev;
+            }, 0);
+
         return newPerson;
     }))
     const dispatch = useDispatch()
@@ -40,7 +45,7 @@ export function People() {
               <ul>
               {people.map(person => {
                   return (
-                      <li key={person.id}>{person.name} - ${person.totalCost}</li>
+                      <li key={person.id}>{person.name} - ${ Math.round(person.totalCost * 100) / 100 }</li>
                   )
               })}
               </ul>
