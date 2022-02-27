@@ -15,7 +15,6 @@ export const personAssignmentSlice = createSlice({
 
         removeAssignment: (state, action) => {
             state.assignments = state.assignments.filter(assignment => {
-                console.log(action.payload)
                 return assignment.personId !== action.payload.personId || assignment.itemId !== action.payload.itemId;
             })
         }

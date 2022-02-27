@@ -8,15 +8,15 @@ export function People() {
     const [currPerson, setcurrPerson] = useState("");
 
     // Redux state
-    const people = useSelector(state => state.people.people)
-    const dispatch = useDispatch()
-    const assignments = useSelector(state => state.personAssignments.assignments)
-    const items = useSelector(state => state.items.items)
-
-    function getCostByPerson(personId) {
-        return assignments.reduce((prev, curr) => {
-            if (curr.personId === personId) {
-                let filteredItems = items.filter(item => item.id === curr.itemId)
+    const people = useSelector(state => state.people.people.map(person => {
+        let newPerson = {
+            name: person.name,
+            id: person.id,
+            totalCost: 0,
+        }
+        newPerson.totalCost = state.personAssignments.assignments.reduce((prev, curr) => {
+            if (curr.personId === person.id) {
+                let filteredItems = state.items.items.filter(item => item.id === curr.itemId)
                 if (filteredItems.length > 0){
                     let item = filteredItems[0]
                     return prev + item.price * item.quantity
@@ -24,7 +24,10 @@ export function People() {
             }
             return prev;
         }, 0);
-    }
+        return newPerson;
+    }))
+    const dispatch = useDispatch()
+
 
     return (
         <div className="innerContent">
@@ -37,7 +40,7 @@ export function People() {
               <ul>
               {people.map(person => {
                   return (
-                      <li key={person.id}>{person.name} - ${getCostByPerson(person.id)}</li>
+                      <li key={person.id}>{person.name} - ${person.totalCost}</li>
                   )
               })}
               </ul>
