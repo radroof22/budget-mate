@@ -11,3 +11,6 @@ Unlike complicated Excel spreadsheets, **Budget-Mate** makes it easy for roommma
 ## Technology
 * **React** was used in order to render the frontend
 * **Redux** to manage state between the people, items and the people-item assignments. This allows for changes on one side of the screen to change all other components accordingly since everything relies on a central store of data
+
+## TODO
+*If you would like to see what else is in the timeline for this project, checkout the ("Issues")[https://github.com/radroof22/budget-mate/issues] tab in this repo to see!
