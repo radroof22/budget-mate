@@ -14,10 +14,17 @@ export const peopleSlice = createSlice({
                 "total": 0,
             })
             state.numberPeople++;
+        },
+
+        removePerson: (state, action) => {
+            state.people = state.people.filter( person => {
+                return person.id !== action.payload
+            })
+
         }
     }
 })
 
-export const {addPerson} = peopleSlice.actions
+export const {addPerson, removePerson} = peopleSlice.actions
 
 export default peopleSlice.reducer

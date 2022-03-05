@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch} from "react-redux";
 import "./People.css"
-import { addPerson } from "./peopleSlice";
+import { addPerson, removePerson } from "./peopleSlice";
+import { removeAssignmentsByPerson } from "../personAssignment/personAssignmentSlice"
 
 export function People() {
     // Local State
@@ -33,6 +34,11 @@ export function People() {
     }))
     const dispatch = useDispatch()
 
+    function viewRemovePerson(personId) {
+        dispatch(removeAssignmentsByPerson(personId))
+        dispatch(removePerson(personId));
+    }
+
 
     return (
         <div className="innerContent">
@@ -45,7 +51,7 @@ export function People() {
               <ul>
               {people.map(person => {
                   return (
-                      <li key={person.id}>{person.name} - ${ Math.round(person.totalCost * 100) / 100 }</li>
+                      <li key={person.id}>{person.name} - ${ Math.round(person.totalCost * 100) / 100 }<button onClick={() => viewRemovePerson(person.id)}>X</button></li>
                   )
               })}
               </ul>
