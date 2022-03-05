@@ -20,14 +20,19 @@ export const personAssignmentSlice = createSlice({
         },
 
         removeAssignmentsByPerson: (state, action) => {
-            
             state.assignments = state.assignments.filter(assignment => { 
                 return assignment.personId !== (action.payload);
+            })
+        },
+
+        removeAssignmentsByItem: (state, action) => {
+            state.assignments = state.assignments.filter(assignment => { 
+                return assignment.itemId !== (action.payload);
             })
         }
     }
 })
 
-export const {assignPerson, removeAssignment, removeAssignmentsByPerson} = personAssignmentSlice.actions
+export const {assignPerson, removeAssignment, removeAssignmentsByPerson, removeAssignmentsByItem} = personAssignmentSlice.actions
 
 export default personAssignmentSlice.reducer
