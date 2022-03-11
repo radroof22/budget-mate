@@ -12,5 +12,6 @@ Unlike complicated Excel spreadsheets, **Budget-Mate** makes it easy for roommma
 * **React** was used in order to render the frontend
 * **Redux** to manage state between the people, items and the people-item assignments. This allows for changes on one side of the screen to change all other components accordingly since everything relies on a central store of data
 
-## TODO
-*If you would like to see what else is in the timeline for this project, checkout the ["Issues"](https://github.com/radroof22/budget-mate/issues) tab in this repo to see!
+## Screenshots and Use
+<img width="1457" alt="image" src="https://user-images.githubusercontent.com/23004551/157987888-64cf2638-2407-4156-a3ff-2e44ce1ad75d.png">
+This is a screenshot of the app working. As you can see, the app automatically calculates the approriate charge to each of the roommates depending on which items they wanted to purchase. From here, users would be able to Venmo or Zelle money accordingly so all of the balances are handled.
