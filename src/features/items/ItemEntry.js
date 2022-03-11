@@ -7,7 +7,7 @@ import {removeAssignmentsByItem} from "../personAssignment/personAssignmentSlice
 
 function ItemEntry({itemId}) {
   // Redux state
-  const item = useSelector(state => state.items.items[itemId])
+  const item = useSelector(state => state.items.items.filter( item => item.id === itemId)[0])
 
   const dispatch = useDispatch()
 
